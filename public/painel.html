@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Painel de Comandas</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body class="display-mode">
+  <main class="display-shell">
+    <header class="display-header">
+      <div>
+        <p class="eyebrow">Festa Junina • Visor</p>
+        <h1>Painel de comandas ao vivo</h1>
+      </div>
+      <div class="display-badge">Atualização automática</div>
+    </header>
+
+    <section class="board-columns">
+      <article class="column-card card">
+        <div class="section-title">
+          <h2>Comandas em preparo</h2>
+          <span id="prep-list-count">0 números</span>
+        </div>
+        <div id="prep-list" class="ready-list"></div>
+      </article>
+
+      <article class="column-card card">
+        <div class="section-title">
+          <h2>Comandas prontas</h2>
+          <span id="ready-list-count">0 números</span>
+        </div>
+        <div id="ready-list" class="ready-list"></div>
+      </article>
+    </section>
+  </main>
+
+  <script src="/painel.js"></script>
+</body>
+</html>

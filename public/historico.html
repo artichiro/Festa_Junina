@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Histórico de Comandas</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">Festa Junina • Histórico</p>
+        <h1>Comandas finalizadas</h1>
+        <p class="lead">Lista de comandas que já foram concluídas e registradas no histórico do sistema.</p>
+      </div>
+      <div class="header-links">
+        <a class="ghost-link" href="/operacao">Voltar para operação</a>
+        <a class="ghost-link" href="/painel">Abrir painel do monitor</a>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="section-title">
+        <h2>Histórico finalizado</h2>
+        <span id="history-counter">0 itens</span>
+      </div>
+      <button id="export-button" class="secondary" type="button">Exportar para CSV</button>
+      <div id="history-list" class="orders"></div>
+    </section>
+  </main>
+
+  <script src="/history.js"></script>
+</body>
+</html>

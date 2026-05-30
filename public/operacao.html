@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Controle de Comandas</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">Festa Junina • Operação</p>
+        <h1>Controle de comandas em tempo real</h1>
+        <p class="lead">Use este painel no celular para enviar o status da comanda e finalizar entregas. O visor principal acompanha tudo ao vivo.</p>
+      </div>
+      <div class="header-links">
+        <a class="ghost-link" href="/">Página inicial</a>
+        <a class="ghost-link" href="/painel" target="_blank" rel="noreferrer">Abrir painel do monitor</a>
+        <a class="ghost-link" href="/historico">Ver histórico</a>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <h2>Nova atualização</h2>
+        <form id="order-form" class="form">
+          <label>
+            Número da comanda
+            <input id="code" name="code" inputmode="numeric" placeholder="Ex.: 42" required />
+          </label>
+          <label>
+            Status
+            <select id="status" name="status" required>
+              <option value="Em preparo">Em preparo</option>
+              <option value="Pronto">Pronto</option>
+              <option value="Finalizado">Finalizado</option>
+            </select>
+          </label>
+          <button type="submit" class="primary">Salvar status</button>
+        </form>
+      </div>
+
+      <div class="card accent">
+        <h2>Finalizar entrega</h2>
+        <p>Digite o número da comanda para marcar a entrega como concluída.</p>
+        <form id="finalize-form" class="form inline-form">
+          <input id="finalize-code" inputmode="numeric" placeholder="Ex.: 42" required />
+          <button type="submit" class="success">Finalizar</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="section-title">
+        <h2>Últimas comandas</h2>
+        <span id="counter">0 itens</span>
+      </div>
+      <div id="orders" class="orders"></div>
+    </section>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>

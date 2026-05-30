@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Abertura do Sistema</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <main class="shell">
+    <section class="hero opening-hero">
+      <div>
+        <p class="eyebrow">Festa Junina • Abertura</p>
+        <h1>Informe a data de abertura do sistema</h1>
+        <p class="lead">Registre quando o atendimento começou para organizar as comandas e o histórico do evento.</p>
+      </div>
+      <a class="ghost-link" href="/operacao">Ir para operação</a>
+    </section>
+
+    <section class="grid single-grid">
+      <div class="card">
+        <h2>Data de abertura</h2>
+        <form id="opening-form" class="form">
+          <label>
+            Data e hora de abertura
+            <input id="opening-date" type="datetime-local" required />
+          </label>
+          <button type="submit" class="primary">Salvar abertura</button>
+        </form>
+      </div>
+
+      <div class="card accent">
+        <h2>Situação atual</h2>
+        <p id="opening-status" class="lead">Nenhuma abertura registrada ainda.</p>
+        <p id="closing-status" class="lead muted-line">Nenhum encerramento registrado ainda.</p>
+        <div id="closing-summary" class="summary-box"></div>
+        <button id="close-day-button" class="danger" type="button">Encerrar dia agora</button>
+        <button id="clear-button" class="secondary" type="button">Limpar dados</button>
+        <a class="ghost-link" href="/painel">Abrir painel do monitor</a>
+        <a class="ghost-link" href="/historico">Ver histórico</a>
+      </div>
+    </section>
+  </main>
+
+  <script src="/opening.js"></script>
+</body>
+</html>
