@@ -360,7 +360,7 @@ button {
 }
 
 .ready-pill strong {
-  font-size: clamp(1.4rem, 2vw, 2rem);
+  font-size: clamp(2rem, 3vw, 2.8rem);
 }
 
 .ready-pill span {

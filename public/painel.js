@@ -54,7 +54,7 @@ function renderBoard() {
     prepOrders.forEach((order) => {
       const pill = document.createElement('div');
       pill.className = 'ready-pill prep';
-      pill.innerHTML = `<strong>${order.code}</strong><span>${order.status}</span>`;
+      pill.innerHTML = `<strong>${order.code}</strong>`;
       prepList.appendChild(pill);
     });
   }
@@ -65,7 +65,7 @@ function renderBoard() {
     readyOrders.forEach((order) => {
       const pill = document.createElement('div');
       pill.className = 'ready-pill';
-      pill.innerHTML = `<strong>${order.code}</strong><span>${order.status}</span>`;
+      pill.innerHTML = `<strong>${order.code}</strong>`;
       readyList.appendChild(pill);
     });
   }
