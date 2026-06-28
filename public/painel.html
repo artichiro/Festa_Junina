@@ -7,20 +7,36 @@
   <link rel="stylesheet" href="/styles.css" />
 </head>
 <body class="display-mode">
+  <script>
+    (function(){
+      try{
+        var theme = localStorage.getItem('theme');
+        if (theme === 'light') document.body.classList.add('light-mode');
+        var fs = localStorage.getItem('fontSizePx');
+        if (fs) document.documentElement.style.fontSize = fs + 'px';
+      }catch(e){/* ignore */}
+    })();
+  </script>
   <main class="display-shell">
     <header class="display-header">
       <div>
         <p class="eyebrow">Festa Junina • Visor</p>
         <h1>Painel de comandas ao vivo</h1>
       </div>
-      <div class="display-badge">Atualização automática</div>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <button id="theme-toggle" class="ghost-link" aria-label="Alternar tema">Tema</button>
+        <button id="font-decrease" class="ghost-link" aria-label="Diminuir fonte">A-</button>
+        <button id="font-increase" class="ghost-link" aria-label="Aumentar fonte">A+</button>
+        <button id="font-reset" class="ghost-link" aria-label="Redefinir fonte">Reset</button>
+        <div class="display-badge">Atualização automática</div>
+      </div>
     </header>
 
     <section class="board-columns">
       <article class="column-card card">
         <div class="section-title">
           <h2>Comandas em preparo</h2>
-          <span id="prep-list-count">0 números</span>
+          <span id="prep-list-count">0 lanches</span>
         </div>
         <div id="prep-list" class="ready-list"></div>
       </article>
@@ -28,7 +44,7 @@
       <article class="column-card card">
         <div class="section-title">
           <h2>Comandas prontas</h2>
-          <span id="ready-list-count">0 números</span>
+          <span id="ready-list-count">0 lanches</span>
         </div>
         <div id="ready-list" class="ready-list"></div>
       </article>

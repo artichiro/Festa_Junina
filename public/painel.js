@@ -43,8 +43,8 @@ function renderBoard() {
   const prepOrders = orders.filter(isPrep);
   const readyOrders = orders.filter(isReady);
 
-  prepListCount.textContent = `${prepOrders.length} número${prepOrders.length === 1 ? '' : 's'}`;
-  readyListCount.textContent = `${readyOrders.length} número${readyOrders.length === 1 ? '' : 's'}`;
+  prepListCount.textContent = `${prepOrders.length} ${prepOrders.length === 1 ? 'lanche' : 'lanches'}`;
+  readyListCount.textContent = `${readyOrders.length} ${readyOrders.length === 1 ? 'lanche' : 'lanches'}`;
   prepList.innerHTML = '';
   readyList.innerHTML = '';
 
@@ -130,3 +130,69 @@ document.addEventListener('click', async (event) => {
 
 refreshOrders();
 setInterval(refreshOrders, 2500);
+
+// Theme toggle: persist preference in localStorage and apply on load
+const themeToggle = document.getElementById('theme-toggle');
+function applyTheme(isLight) {
+  if (isLight) {
+    document.body.classList.add('light-mode');
+  } else {
+    document.body.classList.remove('light-mode');
+  }
+}
+
+function loadTheme() {
+  const stored = localStorage.getItem('theme');
+  const isLight = stored === 'light';
+  applyTheme(isLight);
+  if (themeToggle) themeToggle.textContent = isLight ? 'Tema claro' : 'Tema escuro';
+}
+
+if (themeToggle) {
+  themeToggle.addEventListener('click', () => {
+    const isLight = document.body.classList.toggle('light-mode');
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    themeToggle.textContent = isLight ? 'Tema claro' : 'Tema escuro';
+  });
+}
+
+loadTheme();
+
+// Font size controls: increase, decrease, reset
+const fontIncrease = document.getElementById('font-increase');
+const fontDecrease = document.getElementById('font-decrease');
+const fontReset = document.getElementById('font-reset');
+
+function getCurrentFontSize() {
+  const stored = localStorage.getItem('fontSizePx');
+  if (stored) return parseInt(stored, 10);
+  const computed = window.getComputedStyle(document.documentElement).fontSize || '18px';
+  return parseInt(computed.replace('px', ''), 10);
+}
+
+function setFontSize(px) {
+  const size = Math.max(12, Math.min(28, px));
+  document.documentElement.style.fontSize = size + 'px';
+  localStorage.setItem('fontSizePx', String(size));
+}
+
+function changeFont(delta) {
+  const current = getCurrentFontSize();
+  setFontSize(current + delta);
+}
+
+if (fontIncrease) fontIncrease.addEventListener('click', () => changeFont(2));
+if (fontDecrease) fontDecrease.addEventListener('click', () => changeFont(-2));
+if (fontReset) fontReset.addEventListener('click', () => {
+  const defaultSize = 18;
+  setFontSize(defaultSize);
+});
+
+// Apply saved font size on load
+(function applySavedFont() {
+  const saved = localStorage.getItem('fontSizePx');
+  if (saved) {
+    const n = parseInt(saved, 10);
+    if (!Number.isNaN(n)) document.documentElement.style.fontSize = n + 'px';
+  }
+})();
